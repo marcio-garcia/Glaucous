@@ -47,6 +47,10 @@ class AnalyticsProviderMock: AnalyticsProvider {
     var parameters: [String: Any]?
     var eventName: String = ""
 
+    func setUserProperties(id: String, name: String, email: String) {
+
+    }
+
     func logEvent(event: AnalyticsEvent, parameters: [String : Any]?) {
         self.logEventCalled = true
         self.parameters = parameters
