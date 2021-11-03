@@ -38,7 +38,7 @@ final class GlaucousTests: XCTestCase {
         sut.registerProvider(provider, events: events)
 
         // When
-        sut.setUserProperties(providerId: provider.identifier(), userId: "1", name: "User Name", email: "email@host.com")
+        sut.setUserProperties(userId: "1", name: "User Name", email: "email@host.com")
 
         //Then
         XCTAssertTrue(provider.setUserPropertiesCalled)

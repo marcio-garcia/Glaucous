@@ -9,7 +9,7 @@ import Foundation
 
 public protocol AnalyticsLogging {
     func registerProvider(_ provider: AnalyticsProvider, events: [AnalyticsEvent])
-    func setUserProperties(providerId: String, userId: String, name: String, email: String)
+    func setUserProperties(userId: String, name: String, email: String)
     func logEvent(event: AnalyticsEvent, parameters: [String: Any]?)
     func removeAll()
 }
@@ -35,11 +35,9 @@ public class AnalyticsLogger: AnalyticsLogging {
         })
     }
 
-    public func setUserProperties(providerId: String, userId: String, name: String, email: String) {
-        let firstIndex = providers.firstIndex { $0.identifier() == providerId }
-        if let index = firstIndex {
-            let provider = providers[index]
-            provider.setUserProperties(id: userId, name: name, email: email)
+    public func setUserProperties(userId: String, name: String, email: String) {
+        providers.forEach {
+            $0.setUserProperties(id: userId, name: name, email: email)
         }
     }
 
