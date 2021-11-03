@@ -9,6 +9,7 @@ import Foundation
 
 public protocol AnalyticsProvider {
     func configure()
+    func identifier() -> String
     func setUserProperties(id: String, name: String, email: String)
     func logEvent(event: AnalyticsEvent, parameters: [String: Any]?)
 }
